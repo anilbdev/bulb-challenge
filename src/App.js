@@ -1,4 +1,7 @@
 import { useState } from "react"
+import Button from "@mui/material/Button"
+import Switch from "@mui/material/Switch"
+import FormControlLabel from '@mui/material/FormControlLabel';
 import "./App.scss"
 
 function App() {
@@ -33,14 +36,15 @@ function App() {
           ></div>
         </div>
         <div className="buttons">
-          <Button
+          <MyButton
             switchState={switchState1}
             handleSwitchState={handleSwitchState1}
           />
-          <Button
+          <MyButton
             switchState={switchState2}
             handleSwitchState={handleSwitchState2}
           />
+         
         </div>
       </div>
     </div>
@@ -49,11 +53,16 @@ function App() {
 
 export default App
 
-function Button({ switchState, handleSwitchState }) {
+function MyButton({ switchState, handleSwitchState }) {
   return (
-    <button onClick={() => handleSwitchState()}>
-      {" "}
-      {switchState ? "Off" : "On"}
-    </button>
+    
+    <FormControlLabel control={
+    <Switch 
+    
+    // color={switchState ? "green" : "grey"}
+    color="warning"
+    onClick={() => handleSwitchState()}    
+    checked={switchState} />} label= {switchState ? "On" : "Off"} />
+
   )
 }
